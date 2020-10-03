@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:3000/contect_us -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Web site created using create-react-app">
+    <link rel="apple-touch-icon" href="http://localhost:3000/logo192.png">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+</style><style type="text/css">.header
+{
+  width:100%;
+  /* height: 40%; */
+  border-bottom: 1px solid rgb(104, 4, 4);
+  background-color: rgb(199, 43, 43);
+  display: flex;
+  flex-direction: row;
+}
+.logo{
+  border-radius: 100px;
+  width: 180px;
+  margin:5px;
+  margin-left: 12%;
+
+}
+.header h1{
+  margin-left: 5%;
+  /* border:1px solid black */
+  color: white;
+  font-size: 60px;
+  margin-top: 15px;
+}
+.nav{
+  background-color: rgb(199, 43, 43);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 50px;
+}
+.nav a{
+  color:white;
+  text-decoration: none;
+  transition: transform .8s;
+}
+.nav a:hover{
+color: blue;
+/* background-color: white; */
+}
+.ab{
+  margin-top: 15px;
+}
+.logo3{
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  margin-top: 27px; 
+  margin-left: -80%;
+}
+.img{
+  transition: transform .8s;
+}
+.img:hover{
+  transform: scale(1.2); 
+}
+.welcome_div{
+  display: flex;
+  flex-direction: row;
+  height: 85vh;
+}
+.welcome_div1{
+  width:35%;
+  margin-left: 50px;
+position: relative;
+opacity: 0;
+animation: mymove 2s ;
+animation-fill-mode: forwards;
+margin-top: 50px;
+}
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 50px;   opacity: 1;
+  };
+}
+.welcome_div1 h1{
+  color:rgb(199, 19, 19);
+  font-size: 50px;
+  margin-left: -20%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.welcome_right{
+  margin-left: 190px;
+  margin-top: 14%;
+  position: relative;
+opacity: 0;
+animation: mymove2 3s ;
+animation-fill-mode: forwards;
+}
+@keyframes mymove2 {
+  from {right: 0px;}
+  to {right: 10px;   opacity: 1;
+  };
+}
+.logo3_wel{
+  width:80%;
+  height: 115%;
+}
+.logo_set{
+  display: flex;
+  flex-direction: row;
+}
+.logo_set hr{
+  margin-top: -30px;
+  margin-left: -20%;
+  width:100%;
+  color: red
+}
+.welcome_div1 p{
+  color:white;
+  margin-top: -10px;
+  padding: 2px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  width:80%;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.column{
+  flex: 20% 1;
+}
+.column img {
+  margin-top: 8px;
+  width: 95%;
+}
+.bottam_sec{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+opacity: 0.1;
+animation: mymove1 3s ;
+animation-fill-mode: forwards;
+}
+.b_hr{
+height: 200px;
+margin-top: 5%;
+margin-left: 5%;
+}
+@keyframes mymove1 {
+  from {left: 0%;}
+  to {left: 5%;   opacity: 1;
+  };
+}
+.left{
+  width:40%;
+  /* margin-left:10%; */
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.left hr{
+  margin-left: 2px;
+  margin-top: -20px;
+}
+.left h1{
+  color: red;
+}
+.right{
+  width:27%;
+  margin-top: 7%;
+  margin-left: 0%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.right h1 {
+  color: red;
+  margin-left: -70%;
+}
+.right ol{
+  margin-left: -60%;
+}
+.b_sec_right_hr{
+  width:50%;
+  margin-left: -70%;
+  margin-top: -5%;
+}
+.footer{
+  width:100%;
+  height:60px;
+  /* margin-top: 10%; */
+  background-color: rgb(240, 223, 223);
+}
+.footer p{
+  text-align: center;
+  padding: 15px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12px;
+}
+.name{
+  margin-left: 100px;
+}
+.age{
+  margin-left: 112px;
+}
+.mobile{
+  margin-left: 60px;
+}
+.select_bloodgroup{
+  margin-left: 54px;
+}
+.select_gender{
+  margin-left: 90px;
+
+}
+.login form{
+  margin-left: 45%;
+}
+.name1{
+  margin-left:50px;
+}
+.login Button{
+  margin-bottom: 10px;
+}
+.login h1{
+  color:red;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 55px;
+  margin-top: -5px;
+}
+.login{
+  width:60%;
+  margin-left: 20%;
+  border: 3px solid red;
+  margin-top: 10px;
+  box-shadow: 3px;
+}
+.logo4{
+  height: 90px;
+  width: 90px;
+  /* border-radius: 70px; */
+  margin-top: 30px; 
+}
+.view_req_box{
+  width:80%;
+  min-height: 286px;
+  border:2px solid red;
+  margin-left: 10%;
+  margin-top:2% ;
+  box-shadow: 3px 3px #df5656;
+}
+.view_req_box table{
+  width:100%;
+  padding: 10px;
+}
+.view_req_box td{
+margin-left: 10px;
+padding: 10px;
+text-align: center;
+
+}
+.view_req_box th{
+text-align: center;
+background-color: rgb(209, 19, 35);
+padding: 7px;
+color:white
+}
+.view_req_box h1{
+  text-align: center;
+  font-size: 50px;
+  color: red;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 900;
+}
+
+.camps_flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.main_login{
+  width:30%;
+  padding: 3%;
+  border: 3px solid red;
+  margin:4%; 
+  margin-left: 33%;
+  box-shadow: 1.5px;
+}
+.main_login Button{
+margin-left:40%;
+margin-top: 3%;
+}
+.password{
+  margin-left: 70px;
+}
+.profile{
+  display: flex;
+  width:40%;
+  border: 2px solid red;
+  margin-left: 28%;
+  margin-top: 40px;
+  height:287px
+}
+.profile_left{
+  padding: 8px;
+  
+}
+.profile_left img{
+  height:270px;
+  width: 200px;
+  object-fit: fill;
+}
+.profile_right{
+  margin-left: 30px;
+}
+.feedback{
+  min-height: 100px;
+  width: 200px;
+  margin-left:12px
+}
+</style><style data-jss="" data-meta="MuiTouchRipple">
+.MuiTouchRipple-root {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.MuiTouchRipple-ripple {
+  opacity: 0;
+  position: absolute;
+}
+.MuiTouchRipple-rippleVisible {
+  opacity: 0.3;
+  animation: MuiTouchRipple-keyframes-enter 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+.MuiTouchRipple-ripplePulsate {
+  animation-duration: 200ms;
+}
+.MuiTouchRipple-child {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+.MuiTouchRipple-childLeaving {
+  opacity: 0;
+  animation: MuiTouchRipple-keyframes-exit 550ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.MuiTouchRipple-childPulsate {
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: MuiTouchRipple-keyframes-pulsate 2500ms cubic-bezier(0.4, 0, 0.2, 1) 200ms infinite;
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-enter {
+  0% {
+    opacity: 0.1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes MuiTouchRipple-keyframes-pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style><style data-jss="" data-meta="MuiButtonBase">
+.MuiButtonBase-root {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  user-select: none;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  justify-content: center;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiButtonBase-root::-moz-focus-inner {
+  border-style: none;
+}
+.MuiButtonBase-root.Mui-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+@media print {
+  .MuiButtonBase-root {
+    -webkit-print-color-adjust: exact;
+  }
+}
+</style><style data-jss="" data-meta="MuiButton">
+.MuiButton-root {
+  color: rgba(0, 0, 0, 0.87);
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+}
+.MuiButton-root:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.MuiButton-root.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+@media (hover: none) {
+  .MuiButton-root:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-root:hover.Mui-disabled {
+  background-color: transparent;
+}
+.MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+}
+.MuiButton-text {
+  padding: 6px 8px;
+}
+.MuiButton-textPrimary {
+  color: #3f51b5;
+}
+.MuiButton-textPrimary:hover {
+  background-color: rgba(63, 81, 181, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-textPrimary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-textSecondary {
+  color: #f50057;
+}
+.MuiButton-textSecondary:hover {
+  background-color: rgba(245, 0, 87, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-textSecondary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
+}
+.MuiButton-outlined.Mui-disabled {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.MuiButton-outlinedPrimary {
+  color: #3f51b5;
+  border: 1px solid rgba(63, 81, 181, 0.5);
+}
+.MuiButton-outlinedPrimary:hover {
+  border: 1px solid #3f51b5;
+  background-color: rgba(63, 81, 181, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-outlinedPrimary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-outlinedSecondary {
+  color: #f50057;
+  border: 1px solid rgba(245, 0, 87, 0.5);
+}
+.MuiButton-outlinedSecondary:hover {
+  border: 1px solid #f50057;
+  background-color: rgba(245, 0, 87, 0.04);
+}
+.MuiButton-outlinedSecondary.Mui-disabled {
+  border: 1px solid rgba(0, 0, 0, 0.26);
+}
+@media (hover: none) {
+  .MuiButton-outlinedSecondary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-contained {
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  background-color: #e0e0e0;
+}
+.MuiButton-contained:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  background-color: #d5d5d5;
+}
+.MuiButton-contained.Mui-focusVisible {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+}
+.MuiButton-contained:active {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+.MuiButton-contained.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+@media (hover: none) {
+  .MuiButton-contained:hover {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color: #e0e0e0;
+  }
+}
+.MuiButton-contained:hover.Mui-disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.MuiButton-containedPrimary {
+  color: #fff;
+  background-color: #3f51b5;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: #303f9f;
+}
+@media (hover: none) {
+  .MuiButton-containedPrimary:hover {
+    background-color: #3f51b5;
+  }
+}
+.MuiButton-containedSecondary {
+  color: #fff;
+  background-color: #f50057;
+}
+.MuiButton-containedSecondary:hover {
+  background-color: #c51162;
+}
+@media (hover: none) {
+  .MuiButton-containedSecondary:hover {
+    background-color: #f50057;
+  }
+}
+.MuiButton-disableElevation {
+  box-shadow: none;
+}
+.MuiButton-disableElevation:hover {
+  box-shadow: none;
+}
+.MuiButton-disableElevation.Mui-focusVisible {
+  box-shadow: none;
+}
+.MuiButton-disableElevation:active {
+  box-shadow: none;
+}
+.MuiButton-disableElevation.Mui-disabled {
+  box-shadow: none;
+}
+.MuiButton-colorInherit {
+  color: inherit;
+  border-color: currentColor;
+}
+.MuiButton-textSizeSmall {
+  padding: 4px 5px;
+  font-size: 0.8125rem;
+}
+.MuiButton-textSizeLarge {
+  padding: 8px 11px;
+  font-size: 0.9375rem;
+}
+.MuiButton-outlinedSizeSmall {
+  padding: 3px 9px;
+  font-size: 0.8125rem;
+}
+.MuiButton-outlinedSizeLarge {
+  padding: 7px 21px;
+  font-size: 0.9375rem;
+}
+.MuiButton-containedSizeSmall {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+}
+.MuiButton-containedSizeLarge {
+  padding: 8px 22px;
+  font-size: 0.9375rem;
+}
+.MuiButton-fullWidth {
+  width: 100%;
+}
+.MuiButton-startIcon {
+  display: inherit;
+  margin-left: -4px;
+  margin-right: 8px;
+}
+.MuiButton-startIcon.MuiButton-iconSizeSmall {
+  margin-left: -2px;
+}
+.MuiButton-endIcon {
+  display: inherit;
+  margin-left: 8px;
+  margin-right: -4px;
+}
+.MuiButton-endIcon.MuiButton-iconSizeSmall {
+  margin-right: -2px;
+}
+.MuiButton-iconSizeSmall > *:first-child {
+  font-size: 18px;
+}
+.MuiButton-iconSizeMedium > *:first-child {
+  font-size: 20px;
+}
+.MuiButton-iconSizeLarge > *:first-child {
+  font-size: 22px;
+}
+</style><script charset="utf-8" src="./React App_files/main.4b4c54b3d53f238670ce.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.558adebdbd8f7439cf7c.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.3acf5836659194029ae0.hot-update.js"></script></head>
+  
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="App"><div class="header"><img src="./React App_files/bloodimg.caacc96a.png" class="logo"><h1>Life Saver</h1></div><div><div class="nav"><div class="ab"><a href="http://localhost:3000/">Home</a></div><div class="ab"><a href="http://localhost:3000/send_request">Send Request</a></div><div class="ab"><a href="http://localhost:3000/view_request">View Request</a></div><div class="ab"><a href="http://localhost:3000/profile">Profile</a></div><div class="ab"><a href="http://localhost:3000/camps">Camps</a></div><div class="ab"><a href="http://localhost:3000/contect_us">Contect Us</a></div><div class="ab"><a href="http://localhost:3000/about">About Us</a></div><div class="ab"><a href="http://localhost:3000/contect_us">Logout</a></div></div></div><div class="main_login"><form><p>Username <input class="password" type="text"></p><br><p>Email <input class="name" type="email"></p><br><p>Tell us your problem <input class="feedback" type="text"></p><br><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary" tabindex="0" type="submit"><span class="MuiButton-label">Submit</span><span class="MuiTouchRipple-root"></span></button></form></div><div class="footer"><p>@ all right reserved by sourabh kamboj</p></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/0.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.36b7a6947e9967d1821a.hot-update.js"></script>
+
+</body></html>
