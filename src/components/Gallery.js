@@ -2,27 +2,10 @@ import React from 'react'
 import logo3 from "./images/logo3.jpg";
 import "../App.css";
 function Gallery() {
+  
     return (
         <div>
-        {/* <div className="row">
-          <div className="column">
-              <img className="img" src={logo3}/>
-              <img className="img" src={logo3}/>
-              </div>
-              <div className="column">
-              <img className="img" src={logo3}/>
-              <img  className="img" src={logo3}/>
-              </div>
-              <div className="column">
-              <img className="img" src={logo3}/> 
-              <img className="img" src={logo3}/>
-              </div>
-              <div className="column">
-              <img className="img" src={logo3}/>
-              <img className="img" src={logo3}/>
-          </div>
-        </div> */}
-        {/* <hr color="red" width="80%" margin-left="7%"/> */}
+      
         <div className="bottam_sec">
             <div className="left">
                 <h1>Blood Bank </h1>

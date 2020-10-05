@@ -2,7 +2,11 @@ import React,{useState} from 'react'
 import Button from "@material-ui/core/Button";
 import {auth} from "./Firebase"
 import "../App.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
+toast.configure();
+
 function Login() {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState();
@@ -10,12 +14,29 @@ function Login() {
 
     const submit1=(e)=>{
         e.preventDefault();
-      
         auth.signInWithEmailAndPassword(email, password).then((cred) => {
             history.push("/");
+            console.log(cred)
+            toast.error("Welcome again", {
+                position: "top-left",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });    
+            // toast("wow nice",{position:toast.POSITION.TOP_LEFT})        
         }).catch(err=>{
-            console.log(err)
-        })
+            toast.error(`${err}`, {
+                position: "top-left",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });          })
 
     }
     return (
@@ -24,7 +45,18 @@ function Login() {
             <form onSubmit={submit1}>
             <p>Email <input onChange={(e)=>setEmail(e.target.value)} className="name" type="email" /></p><br/>
             <p>Password <input onChange={(e)=>setPassword(e.target.value)} className="password" type="password" /></p> 
-            <Button color="secondary"  variant="contained" type="submit">Login</Button>    
+            <Button color="secondary"  variant="contained" type="submit">Login</Button>
+            {/* <ToastContainer
+position="top-left"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>     */}
             </form>
         </div>
     )

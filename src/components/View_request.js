@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react';
+import {db} from "./Firebase"
+function View_request(props) {
+  const [arr,setArr]=useState([]);
+  useEffect(()=>{
+    db.collection("user_request").onSnapshot(result=>{
+      setArr(result.docs);    
+  })
+},[])
 
-function View_request() {
-    const arr=[{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"},{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"},{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"},{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"},{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"},{name:"jill",lastname:"smith",age:"50",blood:"b+",gender:"male",mobile:"8950703051",gmail:"sourabhkamboj247@gmail.com"}]
     return (
         <div className="view_req_box">
           <h1>Requests For Blood</h1>
@@ -13,18 +19,23 @@ function View_request() {
     <th>Gender</th>
     <th>Contact No.</th>
     <th>Email</th>
+    <th>Till Date</th>
   </tr>
-  {arr.map(item=>{
+
+  {  arr.map(item=>{
       return(
  <tr>
- <td>{item.name}</td>
- <td>{item.age}</td>
- <td>{item.blood}+</td>
- <td>{item.gender}</td>
- <td>{item.mobile}</td>
- <td>{item.gmail}</td>
+ <td>{item.data().name}</td>
+ <td>{item.data().age}</td>
+ <td>{item.data().blood_group}</td>
+ <td>{item.data().gender}</td>
+ <td>{item.data().mobile}</td>
+ <td>{item.data().email}</td>
+ <td>{item.data().date}</td>
 </tr>
-  )})}
+  )})
+  
+}
  
  
 </table>

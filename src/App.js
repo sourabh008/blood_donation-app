@@ -21,12 +21,14 @@ import {db ,auth} from "./components/Firebase.js"
 function App() {
   const [auth2,setAuth2]=useState('false');
   const [userdetails,setUserdetails]=useState({});
+  const [uid,setUid]=useState("");
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if(user){
     db.collection('users').doc(user.uid).get().then(doc => {
       setAuth2("true");
       setUserdetails(doc.data());
+      setUid(user.uid);
     })
   }else{
     setAuth2("false");
@@ -34,10 +36,6 @@ function App() {
   })
 
   }, [])
-  // console.log(userdeta)
-
-
-
   return (
     <div className="App"> 
       <Router>
@@ -51,10 +49,10 @@ function App() {
           <D_registration/>
           </Route>
         <Route path="/send_request">
-            <Request/>
+            <Request  token={uid}/>
         </Route>
         <Route path="/view_request">
-          <View_request/>
+          <View_request token={uid} />
         </Route>
         <Route path="/camps">
           <Camps/>
@@ -66,7 +64,7 @@ function App() {
           <Login/>
         </Route>
         <Route path="/profile">
-          <Profile data={userdetails}/>
+          <Profile  token={uid} data={userdetails}/>
         </Route>
         <Route path="/contect_us">
           <Contect/>
