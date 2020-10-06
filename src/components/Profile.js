@@ -10,7 +10,33 @@ import UpdateSharpIcon from '@material-ui/icons/UpdateSharp'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import EditIcon from '@material-ui/icons/Edit'
-const useStyles = makeStyles(theme => ({
+import { ToastContainer, toast } from 'react-toastify'
+import { withStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import MuiDialogTitle from '@material-ui/core/DialogTitle'
+import MuiDialogContent from '@material-ui/core/DialogContent'
+import MuiDialogActions from '@material-ui/core/DialogActions'
+import CloseIcon from '@material-ui/icons/Close'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import 'react-toastify/dist/ReactToastify.css'
+import logo3 from './images/logo3.jpg'
+import { useHistory } from 'react-router-dom'
+
+
+const styles = theme => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2)
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500]
+  }
+})
+const useStyles1 = makeStyles(theme => ({
   root: {
     display: 'flex',
     '& > *': {
@@ -24,35 +50,148 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(14)
   }
 }))
+const DialogTitle = withStyles(styles)(props => {
+  const { children, classes, onClose, ...other } = props
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant='h6'>{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label='close'
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  )
+})
+const DialogContent = withStyles(theme => ({
+  root: {
+    padding: theme.spacing(2)
+  }
+}))(MuiDialogContent)
+
+const DialogActions = withStyles(theme => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(20)
+  }
+}))(MuiDialogActions)
+const useStyles = makeStyles({
+  root: {
+    minWidth: 245,
+    marginTop: 10
+  },
+  media: {
+    height: 250
+  }
+})
 function Profile (props) {
-  const classes = useStyles()
+  //new dialog area
+
+
+  const [name, setName] = useState('')
+  const [gender, setGender] = useState('')
+  const [age, setAge] = useState()
+  const [blood_group, setBlood_group] = useState('')
+  const [email, setEmail] = useState('')
+  const [mobile, setMobile] = useState()
+  const [date, setDate] = useState();
+  const [token,setToken]=useState();
+  const history = useHistory()
+
+
+  const submit1 = e => {
+    e.preventDefault()
+    const obj1 = {
+      name: name,
+      age: age,
+      blood_group: blood_group,
+      gender: gender,
+      mobile: mobile,
+      email: email,
+      date: date,
+      user_id: props.token
+    }
+    db.collection('user_request')
+      .doc(token)
+      .set(obj1)
+      .then(callback => {
+        history.push('/profile')
+        handleClose();
+        toast.success('Profile Updated Successfully', {
+          position: 'top-left',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined
+        })
+      })
+      .catch(err => {
+        toast.error(`${err}`, {
+          position: 'top-left',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
+      })
+  }
+  // const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
+  const handleClickOpen = (values) => {
+    setToken(values);
+    setOpen(true)
+    db.collection("user_request").doc(values).get()
+    .then(doc=>{
+      setName(doc.data().name);
+      setAge(doc.data().age);
+      setDate(doc.data().date)
+      setEmail(doc.data().email)
+      setGender(doc.data().gender)
+      setMobile(doc.data().mobile)
+      setBlood_group(doc.data().blood_group)
+      console.log(doc.data().age)
+    })
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const classes = useStyles1()
   const [arr, setArr] = useState([])
-  console.log(props.token)
+  // const history = useHistory()
   var arr1 = []
   useEffect(() => {
     db.collection('user_request').onSnapshot(result => {
-        const temp=[];
-        result.forEach(doc=>temp.push({...doc.data(),id:doc.id}))
-      setArr(result.docs)
+      const temp = []
+      result.docs.forEach(doc => temp.push({ ...doc.data(), id: doc.id }))
+
+      setArr(temp)
     })
   }, [])
-  console.log(temp)
   arr.map(doc => {
-    if (doc.data().user_id === props.token) {
-      console.log(doc.id)
-      arr1.push(doc.data())
+    if (doc.user_id === props.token) {
+      arr1.push(doc)
     }
   })
-  const delete_item = () => {
-    db.collection('user_request')
-      .doc(props.token)
-      .delete()
-      .then(() => {
-        console.log('deleted')
+  const delete_item = (values) => {
+    db.collection('user_request').doc(values).delete().then(()=>{
+      toast.info('deleted Successfully', {
+        position: 'top-left',
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
       })
-  }
-  const editProfile = () => {
-    alert('hello from edit')
+    })    
   }
   return (
     <div className='profile_main'>
@@ -82,12 +221,12 @@ function Profile (props) {
                       <td>{item.email}</td>
                       <td>{item.date}</td>
                       <Tooltip title='Delete'>
-                        <IconButton onClick={delete_item} aria-label='delete'>
+                        <IconButton onClick={()=>delete_item(item.id)} aria-label='delete'>
                           <DeleteIcon color='secondary' />
                         </IconButton>
                       </Tooltip>
                       <Tooltip title='Update'>
-                        <IconButton onClick={delete_item} aria-label='Update'>
+                        <IconButton onClick={()=>handleClickOpen(item.id)} aria-label='Update'>
                           <UpdateSharpIcon />
                         </IconButton>
                       </Tooltip>
@@ -95,9 +234,111 @@ function Profile (props) {
                   )
                 })}
               </table>
+              
             ) : (
               <h1>No post found</h1>
             )}
+            <hr/>
+              <Dialog
+                onClose={handleClose}
+                aria-labelledby='customized-dialog-title'
+                open={open}
+              >
+                <DialogTitle id='customized-dialog-title' onClose={handleClose}>
+                  Update Profile
+                </DialogTitle>
+                <DialogContent dividers>
+{/* update profile html */}
+<form onSubmit={submit1}>
+        <p>
+          {' '}
+          Name{' '}
+          <input
+            className='name'
+            type='text'
+            onChange={e => setName(e.target.value)}
+            value={name}
+            required
+          />
+        </p>
+        <p>
+          Gender{' '}
+          <select
+            className='select_gender'
+            value={gender}
+            onChange={e => setGender(e.target.value)}
+          >
+            <option >none</option>
+            <option value='male'>male</option>
+            <option value='female'>female</option>
+          </select>{' '}
+        </p>
+        <p>
+          Age{' '}
+          <input
+            onChange={e => setAge(e.target.value)}
+            value={age}
+            className='age'
+            type='number'
+            required
+          />
+        </p>
+        <p>
+          Mobile No.{' '}
+          <input
+            onChange={e => setMobile(e.target.value)}
+            className='mobile'
+            value={mobile}
+            type='tel'
+          />
+        </p>
+        <p>
+          Blood group
+          <select
+            className='select_bloodgroup'
+            onChange={e => setBlood_group(e.target.value)}
+            value={blood_group}
+            required
+          >
+            <option >select</option>
+            <option value='A+'>AB+</option>
+            <option value='A-'>AB+</option>
+            <option value='B+'>AB+</option>
+            <option value='B-'>AB+</option>
+            <option value='AB+'>AB+</option>
+            <option value='AB-'>AB-</option>
+            <option value='o+'>o+</option>
+            <option value='o-'>o-</option>
+          </select>
+        </p>
+        <p>
+          Email{' '}
+          <input
+            onChange={e => setEmail(e.target.value)}
+            className='name'
+            value={email}
+            type='email'
+            required
+          />
+        </p>
+        <p>
+          Till date{' '}
+          <input
+            onChange={e => setDate(e.target.value)}
+            className='select_gender'
+            type='date'
+            value={date}
+            required
+          />
+        </p>
+
+        <Button color='secondary' variant='contained' type='submit'>
+          {' '}
+          Update
+        </Button>
+      </form>
+                </DialogContent>
+              </Dialog>
           </div>
         </CardContent>
       </Card>
@@ -114,9 +355,11 @@ function Profile (props) {
             <div className='profile_right'>
               <h2>{props.data.name}</h2>
             </div>
+           {/* profile edit */}
+
             <div>
               <Tooltip title='Edit'>
-                <IconButton onClick={editProfile} aria-label='Edit'>
+                <IconButton  aria-label='Edit'>
                   <EditIcon color='secondary' />
                 </IconButton>
               </Tooltip>
