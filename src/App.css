@@ -315,7 +315,7 @@
   background-color: rgb(244, 247, 252);
 }
 .profile_main2 {
-  background-color: rgb(244, 247, 252);
+  background-color: rgb(231, 237, 247);
   margin-top: 20px;
   width: 32%;
   height: 460px;
@@ -404,4 +404,48 @@
   /* margin-top: -30px; */
   font-weight: normal;
 
+}
+.profile_left h4{
+  font-family: arial, sans-serif;
+  color: red;
+  text-align: center;
+  font-weight: normal;
+
+}
+.blood_donated{
+  width:60%;
+  margin-left: 20%;
+  margin-top: 2%;
+  /* background-color: black; */
+  min-height: 304px;
+}
+.blood_donated h1{
+  font-family: arial, sans-serif;
+  color: red;
+  text-align: center;
+  font-size: 35px;
+  /* margin-top: -30px; */
+  font-weight: normal;
+  margin-top: 0px;
+}
+.blood_donated  h4{
+  font-family: arial, sans-serif;
+  color: red;
+  text-align: center;
+  font-size: 20px;
+  /* margin-top: -30px; */
+  font-weight: normal;
+  margin-top: 0px;
+}
+.donate_table{
+  width: 100%;
+  padding: 5px;
+  font-family: arial, sans-serif;
+
+}
+.donate_table td {
+  /* margin-left: 10px;
+  margin-top: 10px; */
+  padding: 5px;
+  text-align: center;
 }

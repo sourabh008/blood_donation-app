@@ -1,10 +1,9 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {
-    BrowserRouter as Router,
     Link
   } from "react-router-dom";
   import "../App.css";
-  import { ToastContainer, toast } from 'react-toastify';
+  import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
   import {auth} from "./Firebase"
   import { useHistory } from 'react-router-dom';
@@ -41,6 +40,7 @@ function Navbar(props) {
                <div className="ab"><Link to="/send_request">Send Request</Link></div>
                <div className="ab"><Link to="/view_request">View Request</Link></div>
                <div className="ab"><Link to="profile">Profile</Link></div>
+               <div  className="ab"><Link to="/blood_donated">Blood Donated</Link></div>
                <div className="ab"><Link to="/camps">Camps</Link></div>
                <div className="ab"><Link to="/contect_us">Contect Us</Link></div>
                <div className="ab"><Link to="/about">About Us</Link></div>

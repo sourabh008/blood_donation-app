@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Button from "@material-ui/core/Button";
 import {auth} from "./Firebase"
 import "../App.css";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 toast.configure();
@@ -17,7 +17,7 @@ function Login() {
         auth.signInWithEmailAndPassword(email, password).then((cred) => {
             history.push("/");
             console.log(cred)
-            toast.error("Welcome again", {
+            toast.success("Welcome again", {
                 position: "top-left",
                 autoClose: 3000,
                 hideProgressBar: false,

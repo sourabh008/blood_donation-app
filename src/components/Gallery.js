@@ -1,5 +1,4 @@
 import React from 'react'
-import logo3 from "./images/logo3.jpg";
 import "../App.css";
 function Gallery() {
   

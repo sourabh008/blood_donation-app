@@ -4,7 +4,7 @@ import '../App.css'
 import request from './images/request.jpg'
 import { useHistory } from 'react-router-dom'
 import { db } from './Firebase'
-import { ToastContainer, toast } from 'react-toastify'
+import {  toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure()
 function Request (props) {
@@ -16,7 +16,6 @@ function Request (props) {
   const [mobile, setMobile] = useState()
   const [date, setDate] = useState()
   const history = useHistory()
-  const [all_vlaue, setAll_value] = useState()
 
   const submit1 = e => {
     e.preventDefault()
@@ -60,7 +59,7 @@ function Request (props) {
   return (
     <div className='login'>
       <h1>
-        <img src={request} className='logo4' /> Request For Blood
+        <img src={request} alt="request" className='logo4' /> Request For Blood
       </h1>
       <form onSubmit={submit1}>
         <p>
