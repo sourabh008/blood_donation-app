@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
-import { db } from './Firebase'
+import { db, storage } from './Firebase'
 import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -10,7 +10,7 @@ import UpdateSharpIcon from '@material-ui/icons/UpdateSharp'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import EditIcon from '@material-ui/icons/Edit'
-import {  toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { withStyles } from '@material-ui/core/styles'
 import Dialog from '@material-ui/core/Dialog'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
@@ -71,8 +71,9 @@ const DialogContent = withStyles(theme => ({
 }))(MuiDialogContent)
 
 function Profile (props) {
+  console.log(props)
   //new dialog area
-
+  const [imageAsFile, setImageAsFile] = useState('')
   const [name, setName] = useState('')
   const [gender, setGender] = useState('')
   const [age, setAge] = useState()
@@ -84,7 +85,10 @@ function Profile (props) {
   const [adderess, setAdderess] = useState()
 
   const history = useHistory()
-
+  const handleImageAsFile = e => {
+    const image = e.target.files[0]
+    setImageAsFile(imageFile => image)
+  }
   const submit1 = e => {
     e.preventDefault()
     const obj1 = {
@@ -127,43 +131,79 @@ function Profile (props) {
   }
   const submit2 = e => {
     e.preventDefault()
-    const obj1 = {
-      name: name,
-      age: age,
-      blood_group: blood_group,
-      gender: gender,
-      mobile: mobile,
-      email: email,
-      adderess: adderess,
-      user_id: props.token
+    const uploadTask = storage
+      .ref(`/images/${imageAsFile.name}`)
+      .put(imageAsFile)
+    if (imageAsFile === '') {
+      console.error(`not an image, the image file is a ${typeof imageAsFile}`)
     }
-    db.collection('users')
-      .doc(props.token)
-      .set(obj1)
-      .then(callback => {
-        history.push('/profile')
-        handleClose()
-        toast.success('Profile Updated Successfully', {
-          position: 'top-left',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined
-        })
-      })
-      .catch(err => {
-        toast.error(`${err}`, {
-          position: 'top-left',
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined
-        })
-      })
+    uploadTask.on(
+      'state_changed',
+      snapShot => {
+        console.log(snapShot)
+      },
+      err => {
+        console.log(err)
+      },
+      () => {
+        storage
+          .ref('images')
+          .child(imageAsFile.name)
+          .getDownloadURL()
+          .then(fireBaseUrl => {
+            db.collection('users')
+              .doc(props.token)
+              .set({
+                name: name,
+                age: age,
+                blood_group: blood_group,
+                gender: gender,
+                mobile: mobile,
+                email: email,
+                adderess: adderess,
+                imaUrl: fireBaseUrl
+              })
+          })
+          .then(callback => {
+            history.push('/profile')
+            handleCloseProfile()
+            toast.success('Profile Updated Successfully', {
+              position: 'top-left',
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined
+            })
+          })
+          .catch(err => {
+            toast.error(`${err}`, {
+              position: 'top-left',
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined
+            })
+          })
+      }
+    )
+
+    // const obj1 = {
+    //   name: name,
+    //   age: age,
+    //   blood_group: blood_group,
+    //   gender: gender,
+    //   mobile: mobile,
+    //   email: email,
+    //   adderess: adderess,
+    //   user_id: props.token
+    // }
+    // db.collection('users')
+    //   .doc(props.token)
+    //   .set(obj1)
   }
   // const classes = useStyles()
   const [open, setOpen] = React.useState(false)
@@ -193,19 +233,19 @@ function Profile (props) {
     setOpenprofile(false)
   }
   const handleClickOpenProfile = () => {
-    setOpenprofile(true);
+    setOpenprofile(true)
     db.collection('users')
-    .doc(props.token)
-    .get()
-    .then(doc => {
-      setName(doc.data().name)
-      setAge(doc.data().age)
-      setAdderess(doc.data().adderess)
-      setEmail(doc.data().email)
-      setGender(doc.data().gender)
-      setMobile(doc.data().mobile)
-      setBlood_group(doc.data().blood_group)
-    })
+      .doc(props.token)
+      .get()
+      .then(doc => {
+        setName(doc.data().name)
+        setAge(doc.data().age)
+        setAdderess(doc.data().adderess)
+        setEmail(doc.data().email)
+        setGender(doc.data().gender)
+        setMobile(doc.data().mobile)
+        setBlood_group(doc.data().blood_group)
+      })
   }
   const classes = useStyles1()
   const [arr, setArr] = useState([])
@@ -215,7 +255,7 @@ function Profile (props) {
     db.collection('user_request').onSnapshot(result => {
       const temp = []
       result.docs.forEach(doc => temp.push({ ...doc.data(), id: doc.id }))
-
+    console.log(temp)
       setArr(temp)
     })
   }, [])
@@ -246,7 +286,7 @@ function Profile (props) {
         <CardContent>
           <div>
             <h1>Your Requests</h1>
-            <hr/>
+            <hr />
             {arr1.length > 0 ? (
               <table>
                 <tr>
@@ -289,7 +329,7 @@ function Profile (props) {
                 })}
               </table>
             ) : (
-              <h4 >You do not have any request yet </h4>
+              <h4>You do not have any request yet </h4>
             )}
 
             <Dialog
@@ -401,7 +441,7 @@ function Profile (props) {
             <div className={classes.root}>
               <Avatar
                 alt='Remy Sharp'
-                src='https://picsum.photos/200/200'
+                src={props.data.imaUrl}
                 className={classes.large}
               />
             </div>
@@ -542,6 +582,14 @@ function Profile (props) {
                     value={adderess}
                     type='text'
                     required
+                  />
+                </p>
+                <p>
+                  Upload image{' '}
+                  <input
+                    onChange={handleImageAsFile}
+                    className='password'
+                    type='file'
                   />
                 </p>
                 <Button color='secondary' variant='contained' type='submit'>

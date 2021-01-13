@@ -1,3 +1,7 @@
+*{
+  font-family: arial, sans-serif;
+/* margin:0; */
+}
 .header {
   width: 100%;
   /* height: 40%; */
@@ -51,6 +55,8 @@
 .img:hover {
   transform: scale(1.2);
 }
+
+
 .welcome_div {
   display: flex;
   flex-direction: row;
@@ -78,7 +84,7 @@
   color: rgb(199, 19, 19);
   font-size: 50px;
   margin-left: -20%;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
 }
 
 .welcome_right {
@@ -116,7 +122,7 @@
   color: white;
   margin-top: -10px;
   padding: 2px;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: arial, sans-serif;
 }
 .row {
   display: flex;
@@ -157,7 +163,7 @@
 .left {
   width: 40%;
   /* margin-left:10%; */
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: arial, sans-serif;
 }
 .left hr {
   margin-left: 2px;
@@ -170,7 +176,7 @@
   width: 27%;
   margin-top: 7%;
   margin-left: 0%;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: arial, sans-serif;
 }
 .right h1 {
   color: red;
@@ -193,7 +199,7 @@
 .footer p {
   text-align: center;
   padding: 15px;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: arial, sans-serif;
   font-size: 12px;
 }
 .name {
@@ -203,10 +209,10 @@
   margin-left: 112px;
 }
 .mobile {
-  margin-left: 60px;
+  margin-left: 64px;
 }
 .select_bloodgroup {
-  margin-left: 54px;
+  margin-left: 60px;
 }
 .select_gender {
   margin-left: 90px;
@@ -225,7 +231,7 @@
 .login h1 {
   color: red;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   font-size: 55px;
   margin-top: -5px;
   font-weight: normal;
@@ -233,13 +239,12 @@
 .login {
   width: 50%;
   margin-left: 25%;
-  /* border: 3px solid red; */
   margin-top: 10px;
-  box-shadow: 3px;
-  background-color: rgb(244, 247, 252);
-  /* display: flex; */
+  box-shadow: 3px ;
 }
-
+.request h1{
+  margin-top: -6%;
+}
 .logo4 {
   height: 90px;
   width: 90px;
@@ -274,7 +279,7 @@
   text-align: center;
   font-size: 50px;
   color: red;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   font-weight: 900;
 }
 
@@ -287,11 +292,10 @@
 
 .main_login {
   width: 30%;
-  padding: 3%;
-  margin: 4%;
+  margin: 3%;
   margin-left: 33%;
-  box-shadow: 1.5px;
-  background-color: rgb(247, 247, 248);
+  /* box-shadow: 1.5px; */
+  /* background-color: rgb(174, 174, 245); */
 }
 .main_login button {
   margin-left: 40%;
@@ -325,7 +329,7 @@
   display: flex;
 }
 .profile_right h2 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   font-weight: normal;
   font-size: 34px;
 }
@@ -333,15 +337,15 @@
   margin-left: 140px;
 }
 .main_login h1 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   color: red;
   text-align: center;
   font-size: 44px;
-  margin-top: -30px;
+  margin-top: -10px;
   font-weight: normal;
 }
 .profile_h1 h1 {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   color: red;
   text-align: center;
   font-size: 35px;
@@ -359,7 +363,7 @@
 .camps_h1 {
   text-align: center;
   color: red;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: arial, sans-serif;
   font-size: 55px;
   font-weight: normal;
   margin-top: -6px;
@@ -447,5 +451,57 @@
   /* margin-left: 10px;
   margin-top: 10px; */
   padding: 5px;
+  text-align: center;
+}
+/* about us */
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #edf2fc;
+  color: black;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+.about-main h2{
   text-align: center;
 }

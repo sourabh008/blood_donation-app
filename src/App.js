@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Footer from './components/Footer'
+import About from './components/About'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import D_registration from './components/D_registration'
@@ -21,10 +22,11 @@ function App () {
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
+        setAuth2('true')
         db.collection('users')
           .doc(user.uid)
           .onSnapshot(snapshoot => {
-            setAuth2('true')
+            console.log(snapshoot.data())
             setUserdetails(snapshoot.data())
             setUid(user.uid)
           })
@@ -68,6 +70,9 @@ function App () {
           </Route>
           <Route path='/blood_donated'>
             <Blood_donated token={uid} />
+          </Route>
+          <Route path='/about'>
+            <About />
           </Route>
         </Switch>
         <Footer />

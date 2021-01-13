@@ -4,6 +4,8 @@ import '../App.css'
 import request from './images/request.jpg'
 import { useHistory } from 'react-router-dom'
 import { db } from './Firebase'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import {  toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure()
@@ -57,7 +59,8 @@ function Request (props) {
       })
   }
   return (
-    <div className='login'>
+    <div className='login request'>
+      <Card variant="outlined"><CardContent>
       <h1>
         <img src={request} alt="request" className='logo4' /> Request For Blood
       </h1>
@@ -142,7 +145,8 @@ function Request (props) {
           {' '}
           Make Request
         </Button>
-      </form>
+      </form></CardContent></Card>
+    
       {/* {console.log(all_vlaue)} */}
     </div>
   )
