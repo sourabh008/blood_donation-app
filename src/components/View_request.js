@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { db } from './Firebase'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 function View_request (props) {
   const [arr, setArr] = useState([])
   useEffect(() => {
@@ -11,7 +13,7 @@ function View_request (props) {
   return (
     <div className='view_req_box'>
       <h1>Requests For Blood</h1>
-      <table>
+      {arr.length>0 ?    <table>
         <tr>
           <th>Firstname</th>
           <th>Age</th>
@@ -20,9 +22,10 @@ function View_request (props) {
           <th>Contact No.</th>
           <th>Email</th>
           <th>Till Date</th>
+          <th>Address</th>
         </tr>
 
-        {arr.map(item => {
+        { arr.map(item => {
           return (
             <tr>
               <td>{item.data().name}</td>
@@ -32,10 +35,13 @@ function View_request (props) {
               <td>{item.data().mobile}</td>
               <td>{item.data().email}</td>
               <td>{item.data().date}</td>
+              <td>{item.data()?.address}</td>
             </tr>
           )
         })}
       </table>
+      :<CircularProgress className="viewRequestLoader" color="secondary" />}
+   
     </div>
   )
 }

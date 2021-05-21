@@ -5,11 +5,9 @@ import Gallery from "./Gallery.js"
 
 function Home() {
     return (
-        <div>
-           
+        <div>    
             <Welcome/>
             <Gallery/>
-
         </div>
     )
 }

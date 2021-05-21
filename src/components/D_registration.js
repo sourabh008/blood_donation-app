@@ -27,7 +27,6 @@ function D_registration (props) {
     const image = e.target.files[0]
     setImageAsFile(imageFile => (image))
 }
-console.log(imageAsFile)
 
   const submit1 = e => {
     e.preventDefault()

@@ -92,6 +92,7 @@ function Blood_donated (props) {
       unit: unit,
       email: email,
       date: date,
+      userName:props.userName,
       user_id: props.token
     }
     db.collection('blood_donated')

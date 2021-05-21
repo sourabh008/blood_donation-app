@@ -14,6 +14,9 @@ function Contect () {
   const [username, setUsername] = useState('')
   const [feedback, setFeedback] = useState('')
 
+  const onchangeEmail=(e)=>{
+    setEmail(e.target.value)
+  }
   const submit1 = e => {
     e.preventDefault()
     const obj1 = {
@@ -21,11 +24,13 @@ function Contect () {
       email: email,
       feedback: feedback
     }
+    
     db.collection('contects')
       .doc()
       .set(obj1)
       .then(result => {
-        toast.info('Problem Recorded', {
+        console.log(result)
+        toast.info('Problem Recorded ', {
           position: 'top-left',
           autoClose: 3000,
           hideProgressBar: false,
@@ -39,6 +44,7 @@ function Contect () {
         setUsername('')
       })
       .catch(err => {
+        console.log("1111111111111",err)
         toast.error(`${err}`, {
           position: 'top-left',
           autoClose: 5000,
@@ -70,7 +76,7 @@ function Contect () {
             <p>
               Email{' '}
               <input
-                onChange={e => setEmail(e.target.value)}
+                onChange={onchangeEmail}
                 className='name'
                 value={email}
                 type='email'

@@ -71,7 +71,7 @@ const DialogContent = withStyles(theme => ({
 }))(MuiDialogContent)
 
 function Profile (props) {
-  console.log(props)
+
   //new dialog area
   const [imageAsFile, setImageAsFile] = useState('')
   const [name, setName] = useState('')
@@ -87,7 +87,7 @@ function Profile (props) {
   const history = useHistory()
   const handleImageAsFile = e => {
     const image = e.target.files[0]
-    setImageAsFile(imageFile => image)
+    setImageAsFile(image)
   }
   const submit1 = e => {
     e.preventDefault()
@@ -223,7 +223,6 @@ function Profile (props) {
         setGender(doc.data().gender)
         setMobile(doc.data().mobile)
         setBlood_group(doc.data().blood_group)
-        console.log(doc.data().age)
       })
   }
   const handleClose = () => {
